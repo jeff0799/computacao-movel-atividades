@@ -2,63 +2,54 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   return (
-    <View style={{ flexDirection: 'row', height: '100%' }}>
+    <View style={styles.container}>
 
-      <View style={columnStyle.container}>
-        <View style={{ height: '27%', backgroundColor: '#8876E0', ...rectangleStyle.container }}>
-
-        </View>
-        <View style={{ height: '27%', backgroundColor: '#00BCFA', ...rectangleStyle.container }}>
-
-        </View>
-        <View style={{ height: '46%', backgroundColor: '#007EF8', ...rectangleStyle.container }}>
-
-        </View>
+      <View style={styles.column}>
+        <View style={[styles.box, { flex:1, backgroundColor: '#8876E0' }]} />
+        <View style={[styles.box, { flex:1, backgroundColor: '#00BCFA' }]} />
+        <View style={[styles.box, { flex:2, backgroundColor: '#007EF8' }]} />
       </View>
 
-      <View style={columnStyle.container}>
-        <View style={{ height: '27%', backgroundColor: '#79CCFB', ...rectangleStyle.container }}>
-
-        </View>
-        <View style={{
-          height: '66%', backgroundColor: '#00BCFA',
+      <View style={styles.column}>
+        <View style={[styles.box, { flex:2, backgroundColor: '#79CCFB' }]} />
+        <View style={[styles.box, {
+          flex:5, backgroundColor: '#00BCFA',
           alignItems: 'center', justifyContent: 'center',
-          ...rectangleStyle.container
-        }}>
-          <Text style={textStyle.container}>
-            FLEXBOX
-          </Text>
+        }]}>
+          <View>
+            <Text style={styles.text}>
+              FLEXBOX
+            </Text>
+          </View>
         </View>
-        <View style={{ height: '7%', backgroundColor: '#573FC0', ...rectangleStyle.container }}>
-
-        </View>
+        <View style={[styles.box, { flex:1, backgroundColor: '#573FC0' }]} />
       </View>
 
     </View>
   );
 }
 
-const columnStyle = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
+    flexDirection: 'row',
+    height: '100%'
+  },
+  column: {
     flexDirection: 'column',
     height: '100%',
     width: '50%'
-  }
-
-})
-const rectangleStyle = StyleSheet.create({
-  container: {
-    borderColor: '#453F3F',
-    borderWidth: 5
   },
-});
-const textStyle = StyleSheet.create({
-  container: {
+  box: {
+    borderColor: '#453F3F',
+    borderWidth: 5,
+  },
+  text: {
     color: 'black',
     fontSize: 60,
     fontWeight: 'bold',
     letterSpacing: 10,
     transform: [{ rotate: '270deg' }],
-    width: '200%'
+    width: "500%"
   }
+
 })
